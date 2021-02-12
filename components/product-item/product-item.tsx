@@ -1,10 +1,38 @@
 import React, { ReactElement } from 'react';
+import Link from 'next/link';
 import styles from './product-item.module.scss';
 
-const ProductItem = ({ product }): ReactElement => {
+type Images = {
+    images: {
+        url: string
+    }[]
+}
+
+interface ProductInterface {
+    product: {
+        images: Images,
+        title: string,
+        price: number,
+        inStock: number,
+        description: string,
+        _id: string
+    }
+}
+
+const ProductItem = ({ product }: ProductInterface): ReactElement => {
     const { images, title, price, inStock, description } = product;
 
-    return ( 
+    const userLink = () => {
+        return (
+            <>
+                <Link href={`product/${product._id}`}><a className={styles.btn}>View</a></Link>
+                <Link href={`product/${product._id}`}><a className={styles.btn}>Buy</a></Link>
+               
+            </>
+        );
+    };
+
+    return (
         <>
             <div className={styles.card}>
                 <div className={styles.card_img_top}>
@@ -30,8 +58,7 @@ const ProductItem = ({ product }): ReactElement => {
 
                     {/* Think about buttons */}
                     <div className={styles.details_btn}>
-                        <a className={styles.btn}>View</a>
-                        <a className={styles.btn}>Buy</a>
+                        {userLink()}
                     </div>
                 </div>
             </div>
