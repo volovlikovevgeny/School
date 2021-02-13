@@ -11,7 +11,7 @@ interface UserAction {
 }
 
 const initialState: UserState = {
-    currentUser: {},
+    currentUser: null,
 };
 
 export const userReducer = (state = initialState, action: UserAction): UserState => {

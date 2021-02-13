@@ -1,10 +1,19 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import Head from 'next/head';
 import { getData } from '../../utils/fetchData';
+import { GetServerSideProps } from 'next';
 
-const DetailProduct = ({product}): ReactElement => {
-    console.log(product);
+
+type ProductIdType = {
+    product: {
+
+    }
+}
+
+const DetailProduct = ({ product }: ProductIdType): ReactElement => {
+    const [productInfo, setProductInfo] = useState(product);
     
+
     return (
         <div>
             <Head>
@@ -16,14 +25,11 @@ const DetailProduct = ({product}): ReactElement => {
 };
 
 
-export const getServerSideProps = async ({ params: { id } }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params: { id } }) => {
+
     const res = await getData(`product/${id}`);
 
-    return {
-        props: {
-            product: res.product,
-        },
-    };
+    return { props: { product: res.product } };
 };
 
 

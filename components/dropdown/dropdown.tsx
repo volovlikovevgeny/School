@@ -6,8 +6,8 @@ import styles from './dropdown.module.scss';
 
 interface CurrentUserProps {
     currentUser:{currentUser:{
-        avatar:string,
-        name:string
+        avatar?:string,
+        name?:string
     }}
 }
 
