@@ -3,7 +3,7 @@
     min-height: 70px;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     overflow: hidden;
     align-items: center;
@@ -18,11 +18,6 @@
             text-transform: uppercase;
             color: #555;
             font-size: 30px;
-
-
-            @media screen and(max-width:415px){
-                font-size:20px;
-            }
         }
     }
 
@@ -55,4 +50,11 @@
     .menu_close {
         display: none;
     }
+
+    // @media screen and(max-width:768px){
+    //     .menu_bar,
+    //     .menu_close{
+    //         display: inline-block;
+    //     }
+    // }
 }

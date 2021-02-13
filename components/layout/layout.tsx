@@ -1,7 +1,4 @@
-import React, { ReactElement, ReactNode, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { getData } from '../../utils/fetchData';
-import { setCurrentUser } from '../../redux/user/user.actions';
+import React, { ReactElement, ReactNode} from 'react';
 import NavBar from '../navbar/navbar';
 
 import styles from './layout.module.scss';

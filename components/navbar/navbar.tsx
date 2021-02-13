@@ -17,6 +17,8 @@ function Navbar(): ReactElement {
         }
     };
 
+
+
     const { currentUser } = useTypedSelector(state => state.user);
 
     return (
@@ -28,8 +30,9 @@ function Navbar(): ReactElement {
             <Link href='/'><div className={styles.logo}><a>It School</a></div></Link>
 
             <ul>
-            <RsDropDown title={'Lessons'} />
-                <Link href='/cart'><li><a className={isActive('/cart')} >Cart</a></li></Link>
+                <RsDropDown title={'Lessons'} />
+                <Link href='/cart'><li><a className={isActive('/cart')}>Cart</a></li></Link>
+                
                 {
                     currentUser
                         ?
