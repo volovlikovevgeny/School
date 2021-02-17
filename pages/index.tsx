@@ -1,20 +1,17 @@
 import Head from 'next/head';
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement } from 'react';
 import ProductItem from '../components/product-item/product-item';
 import { getData } from '../utils/fetchData';
-
+import { GetServerSideProps } from 'next';
+import { AppProps } from 'next/dist/next-server/lib/router/router';
 import styles from '../styles/home.module.scss';
 
-
-const Home = (props): ReactElement => {
-  const [products, setProducts] = useState(props.products);
-
+const Home = ({ products }: AppProps): ReactElement => {
   return (
     <div className={styles.homepage}>
       <Head>
         <title>Home Page</title>
       </Head>
-
 
       <div className={styles.products}>
         {
@@ -25,14 +22,11 @@ const Home = (props): ReactElement => {
             ))
         }
       </div>
-
-
     </div>
   );
 };
 
-
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
 
   const res = await getData('product');
 
@@ -44,9 +38,4 @@ export const getServerSideProps = async () => {
   };
 };
 
-
-
 export default Home;
-
-
-

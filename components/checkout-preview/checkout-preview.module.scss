@@ -1,0 +1,68 @@
+.checkout_page {
+    width: 90%;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px auto 0;
+
+    .checkout_header {
+        width: 100%;
+        padding: 10px 0;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid gray;
+        text-transform: uppercase;
+
+        .header_block {
+            width: 23%;
+
+            &:last-child {
+                width: 8%;
+            }
+        }
+    }
+
+    .payinfo {
+        padding: 20px 0;
+        width: 100%;
+        display: flex;
+
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+
+            input{
+                padding: 10px;
+                margin-bottom: 20px;
+            }
+        }
+
+        .total {
+            margin-top: 30px;
+            margin-left: auto;
+            font-size: 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+
+        @media screen and(max-width:768px){
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            form{
+                width: 100%;
+                margin-bottom: 23px;
+            }
+
+            .total{
+                margin: 0;    
+            }
+        }
+    }
+}

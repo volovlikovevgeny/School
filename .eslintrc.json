@@ -30,6 +30,7 @@
         "semi": ["error", "always"],
         "eol-last": ["error", "always"],
         "curly": "error",
-        "comma-dangle": ["error", "always-multiline"]
+        "comma-dangle": ["error", "always-multiline"],
+        "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }]
     }
 }

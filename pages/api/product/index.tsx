@@ -3,6 +3,7 @@ import Products from '../../../models/productModal';
 
 connectDB();
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default async (req, res) => {
     switch (req.method) {
         case "GET":
@@ -10,7 +11,6 @@ export default async (req, res) => {
             break;
     }
 };
-
 
 const getProducts = async (req, res) => {
     try {

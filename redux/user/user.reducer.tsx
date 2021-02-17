@@ -1,19 +1,21 @@
 import { userActionTypes } from '../user/user.types';
 
-interface UserState {
-    currentUser: any,
-}
-
 interface UserAction {
-    type: string,
-    payload?: any
+    type:typeof userActionTypes.SET_CURRENT_USER,
+    payload:[]
 }
 
-const initialState: UserState = {
+interface UserState {
+    currentUser:[],
+}
+
+const initialState:UserState = {
     currentUser: null,
 };
 
-export const userReducer = (state = initialState, action: UserAction): UserState => {
+export const userReducer = (state = initialState, action:UserAction):UserState => {
+    console.log(action);
+
     switch (action.type) {
         case userActionTypes.SET_CURRENT_USER:
             return {

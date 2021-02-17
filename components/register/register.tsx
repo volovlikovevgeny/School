@@ -4,14 +4,12 @@ import { valid } from '../../utils/valid';
 import { useRouter } from 'next/router';
 import { postData } from '../../utils/fetchData';
 import Notify from '../notify/notify';
-
-
-import styles from './register.module.scss';
 import { useTypedSelector } from '../../redux/notify/typedSelectors';
 
+import styles from './register.module.scss';
 
 interface Ivalue {
-    [key: string]: string | number | symbol | any
+    [key: string]: string | number | symbol 
 }
 
 const Register = (): ReactElement => {
@@ -22,8 +20,6 @@ const Register = (): ReactElement => {
     const [userData, setUserData] = useState(initialState);
     const { name, email, password, cf_password } = userData;
     const { currentUser } = useTypedSelector(state => state.user);
-
-
 
     useEffect(() => {
         if (currentUser !== null) {
@@ -50,15 +46,21 @@ const Register = (): ReactElement => {
 
         const res = await postData('auth/register', userData);
 
-
+        console.log(res);
+        
         if (res.err) {
             return dispatch({ type: 'NOTIFY', payload: { error: res.err } });
         }
 
         dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
 
-        router.push('/signin');
-      
+        setUserData(initialState);
+
+        setTimeout(() => {
+            dispatch({ type: 'NOTIFY', payload: {} });
+            router.push('/signin');
+        }, 1000);
+
     };
 
     return (

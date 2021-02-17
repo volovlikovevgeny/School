@@ -1,17 +1,10 @@
 import { notifyActionTypes } from './types';
 
-
-interface notifyState {
-    notify: {
-        error?: string,
-        success?: any,
-    }
-}
-
-const initialState:notifyState = {
+const initialState = {
     notify: {},
 };
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const notifyReducer = (state = initialState, action) => {
     switch (action.type) {
         case notifyActionTypes.NOTIFY:
@@ -23,4 +16,3 @@ export const notifyReducer = (state = initialState, action) => {
             return state;
     }
 };
-

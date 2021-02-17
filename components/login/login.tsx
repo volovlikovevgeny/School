@@ -9,18 +9,16 @@ import styles from './login.module.scss';
 import { useRouter } from 'next/router';
 import { useTypedSelector } from '../../redux/notify/typedSelectors';
 
-
-
 interface Ivalue {
-    [key: string]: string | number | symbol | any
+    [key: string]: string | number | symbol
 }
 
 const Login = (): ReactElement => {
 
     const { currentUser } = useTypedSelector(state => state.user);
-    
+
     useEffect(() => {
-        if(currentUser !== null ){
+        if (currentUser !== null) {
             router.push('/');
         }
     }, [currentUser]);
@@ -30,6 +28,7 @@ const Login = (): ReactElement => {
     const dispatch = useDispatch();
 
     const initialState = { email: '', password: '' };
+
     const [userData, setUserData] = useState(initialState);
     const { email, password } = userData;
 
@@ -44,9 +43,7 @@ const Login = (): ReactElement => {
 
         dispatch({ type: 'NOTIFY', payload: { loading: true } });
 
-
         const res = await postData('auth/login', userData);
-
 
         if (res.err) {
             return dispatch({ type: 'NOTIFY', payload: { error: res.err } });
@@ -62,13 +59,12 @@ const Login = (): ReactElement => {
             },
         });
 
-
         Cookies.set('refreshtoken', res.refresh_token, {
             path: 'api/auth/accessToken',
             expires: 7,
         });
 
-        localStorage.setItem('firstLogin', true);
+        localStorage.setItem('firstLogin', 'true');
 
     };
 

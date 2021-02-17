@@ -2,4 +2,12 @@
     max-width: 1141px;
     margin: 0 auto;
     padding: 0 15px;
+
+
+    .sticky_bag{
+        position: fixed;
+        padding: 20px;
+        bottom: 0%;
+        right: 0%;
+    }
 }

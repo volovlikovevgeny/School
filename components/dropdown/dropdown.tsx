@@ -45,5 +45,4 @@ const DropDown = ({ currentUser: { currentUser }}:CurrentUserProps): ReactElemen
     );
 };
 
-
 export default DropDown;

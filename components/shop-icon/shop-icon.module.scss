@@ -1,0 +1,21 @@
+.shopping_container{
+    width: 80px;
+    height: 80px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    cursor: pointer;
+
+    .shopping_img{
+        width: 80px;
+        height: 80px;
+    }
+    
+    .item_count_container{
+        position: absolute;
+        font-size: 2rem;
+        font-weight: bold;
+        bottom: 10px; 
+    }
+}

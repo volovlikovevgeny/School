@@ -4,16 +4,15 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { AppProps } from 'next/dist/next-server/lib/router/router';
 import { Provider } from 'react-redux';
 import { store, persistor } from '../redux/store';
-
 import Layout from '../components/layout/layout';
+import LoadingSpinner from '../components/loading/loading';
 
 import '../styles/global.scss';
-import LoadingSpinner from '../components/loading/loading';
 
 const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
 
     const [loading, setLoading] = useState<boolean>(false);
-
+ 
     useEffect(() => {
         const start = () => {
             console.log('start');

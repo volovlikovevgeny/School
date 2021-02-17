@@ -1,12 +1,11 @@
 .login_page {
     max-width: 500px;
     border: 2px solid black;
-    margin: 70px auto;
+    margin: 135px auto;
     padding: 30px;
     border-radius: 5px;
 
     .form_header{
-
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -21,8 +20,7 @@
             color: #555;
         }
     }
-
-
+    
     input,
     button {
         width: 100%;
