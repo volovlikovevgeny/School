@@ -47,11 +47,3 @@ const register = async (req: NextApiRequest, res: NextApiResponse) => {
         return res.status(500).json({ err: err.msg });
     }
 };
-
-
-
-
-
-
-
-

@@ -92,7 +92,7 @@ const Register = (): ReactElement => {
                 />
                 <div className={styles.row}>
                     <button className={styles.form_button} type='submit'>Submit</button>
-                    <Link href='/signup'>Register</Link>
+                    <Link href='/signin'>Login</Link>
                 </div>
             </form>
 

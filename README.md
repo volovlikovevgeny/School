@@ -1,5 +1,3 @@
-## UI для торговой площадки
-
 To run the development server:
 
 ```bash

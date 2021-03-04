@@ -1,15 +1,19 @@
-import React, { FormEvent, ReactElement, useState } from 'react';
+import React, { FormEvent, ReactElement, useEffect, useState } from 'react';
 import FormInput from '../form-input/form-input';
 import Link from 'next/link';
+import Cookies from 'js-cookie';
 import { useDispatch } from 'react-redux';
-import { postData } from '../../utils/fetchData';
+import { getData, postData } from '../../utils/fetchData';
 import { addNotifyAction } from '../../redux/notify/actions/actions';
-import styles from './login.module.scss';
 import { addUser } from '../../redux/user/actions/actions';
+import { useRouter } from 'next/router';
+import styles from './login.module.scss';
 
 const Login = (): ReactElement => {
-
     const dispatch = useDispatch();
+    const router = useRouter();
+
+    const [submit, setSubmit] = useState(false);
 
     const [user, setUser] = useState<{
         email: string,
@@ -28,6 +32,8 @@ const Login = (): ReactElement => {
 
         const res = await postData('auth/login', user);
 
+        console.log(user);
+
         if (res.err) {
             dispatch(addNotifyAction({ error: res.err }));
             return;
@@ -36,11 +42,38 @@ const Login = (): ReactElement => {
         dispatch(addNotifyAction({ success: res.msg }));
         setUser({ email: '', password: '' });
 
-        dispatch(addUser(res));
+        Cookies.set('refreshToken', res.refresh_token, {
+            path: 'api/auth/accessToken',
+            expires: 7,
+        });
 
-        console.log(res);
+        localStorage.setItem('firstLogin', (true).toString());
 
+        setSubmit(true);
     };
+
+    useEffect(() => {
+        const firstLogin = localStorage.getItem('firstLogin');
+        if (firstLogin) {
+            getData('auth/accessToken').then(res => {
+                if (res.err) {
+                    localStorage.removeItem('firstLogin');
+                    dispatch(addNotifyAction({ error: res.err }));
+                    return;
+                }
+
+                dispatch(addUser({
+                    token: res.access_token,
+                    user: res.user,
+                }));
+            });
+            setTimeout(() => {
+                dispatch(addNotifyAction({}));
+                router.push('/');
+            }, 800);
+        }
+
+    }, [submit]);
 
     return (
         <div className={styles.login_page}>

@@ -1,21 +1,24 @@
 import React, { ReactElement, useState } from 'react';
 import Link from 'next/link';
 import styles from './navbar.module.scss';
-
+import { useTypedSelector } from '../../redux/hooks/useTypedSelector';
+import DropDown from '../dropdown/dropdown';
 
 const NavBar = (): ReactElement => {
     const [toggle, setToggle] = useState<boolean>(false);
+    const { user } = useTypedSelector(state => state.user);
 
     const menuItems = [
         { item: 'Home', link: '/' },
         { item: 'Card', link: '/card' },
         { item: 'Checkout', link: '/checkout' },
-        { item: 'Sign In', link: '/signin' },
+        // { item: 'Sign In', link: '/signin' },
     ];
 
     const toggleMenu = () => {
         setToggle(!toggle);
     };
+
     return (
         <nav className={styles.nav}>
             <div className={styles.nav_items}>
@@ -27,6 +30,15 @@ const NavBar = (): ReactElement => {
                         <li onClick={() =>
                             setToggle(false)} key={index}><Link href={`${link}`}>{item}</Link>
                         </li>)}
+
+                    {
+                        user
+                            ?
+                            <li style={{ position: "relative" }}><DropDown user={user} /></li>
+                            :
+                            <li onClick={() =>setToggle(false)}> <Link href='/signin'>Log In</Link></li>
+                    }
+
                 </ul>
                 <div className={styles.menu_btn} onClick={toggleMenu}>
                     {toggle ? <span>X</span> : <span>☰</span>}

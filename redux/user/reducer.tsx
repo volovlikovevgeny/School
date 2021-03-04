@@ -5,7 +5,7 @@ interface userState {
     user?: any
 }
 const initialState: userState = {
-    user: {},
+    user: null,
 };
 
 export const userReducer = (
