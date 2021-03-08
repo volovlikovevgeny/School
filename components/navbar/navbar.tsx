@@ -3,6 +3,8 @@ import Link from 'next/link';
 import styles from './navbar.module.scss';
 import { useTypedSelector } from '../../redux/hooks/useTypedSelector';
 import DropDown from '../dropdown/dropdown';
+import Image from 'next/image';
+import ShoppingIcon from '../shopping-icon/shopping-icon';
 
 const NavBar = (): ReactElement => {
     const [toggle, setToggle] = useState<boolean>(false);
@@ -36,9 +38,9 @@ const NavBar = (): ReactElement => {
                             ?
                             <li style={{ position: "relative" }}><DropDown user={user} /></li>
                             :
-                            <li onClick={() =>setToggle(false)}> <Link href='/signin'>Log In</Link></li>
+                            <li onClick={() => setToggle(false)}> <Link href='/signin'>Log In</Link></li>
                     }
-
+                    <ShoppingIcon/>
                 </ul>
                 <div className={styles.menu_btn} onClick={toggleMenu}>
                     {toggle ? <span>X</span> : <span>☰</span>}

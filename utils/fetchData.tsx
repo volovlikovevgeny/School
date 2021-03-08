@@ -1,6 +1,6 @@
 const baseUrl = process.env.BASE_URL;
 
-export const getData = async (url: string): Promise<void> => {
+export const getData = async (url: string): Promise<any> => {
     const res = await fetch(`${baseUrl}/api/${url}`, {
         method: 'GET',
     });

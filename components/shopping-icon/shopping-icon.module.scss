@@ -1,0 +1,9 @@
+.shopping_bag {
+    position: relative;
+    margin-left: 11px;
+    transition: all .10s;
+
+    @media screen and(max-width:560px) {
+        display: none;
+    }
+}

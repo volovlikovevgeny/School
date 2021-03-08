@@ -7,24 +7,23 @@ connectDb();
 export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
     switch (req.method) {
         case 'GET':
-            return await getProducts(req, res);
+            return await getData(req, res);
 
         default:
             return res.json({ msg: 'Hello Product' });
     }
 };
 
-const getProducts = async (req: NextApiRequest, res: NextApiResponse) => {
+const getData = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
-        const products = await Products.find();
+        const { id } = req.query;
+        const product = await Products.findById(id);
 
         res.json({
-            status: 'success',
-            result: products.length,
-            products,
+            product,
         });
 
     } catch (err) {
-        res.json({ err: err.message });
+        res.status(500).json({ err: err.message });
     }
 };

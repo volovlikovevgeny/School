@@ -25,7 +25,7 @@
     "utils/connectDB.js",
     "utils/generateToken.tsx",
     "pages/api/auth/accessToken.js"
-  ],
+, "components/navbar/navbar.jsx"  ],
   "exclude": [
     "node_modules"
   ]

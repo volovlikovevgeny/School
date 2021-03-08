@@ -4,10 +4,21 @@ import styles from './dropdown.module.scss';
 import { addUser } from '../../redux/user/actions/actions';
 import { useDispatch } from 'react-redux';
 
-const DropDown = ({ user }): ReactElement => {
+interface IProps {
+    user: {
+        token: string;
+        avatar: string
+        email: string;
+        name: string;
+        role: string;
+        root: boolean;
+    }
+}
 
-    console.log(user);
-    
+const DropDown = ({ user }: IProps): ReactElement => {
+
+    const { avatar, name } = user.user;
+
     const dispatch = useDispatch();
 
     const handleLogout = () => {
@@ -19,29 +30,23 @@ const DropDown = ({ user }): ReactElement => {
 
         dispatch(addUser(null));
         dispatch({ type: 'NOTIFY', payload: { success: 'Logged Out!' } });
-
-        setTimeout(() => {
-            dispatch({ type: 'NOTIFY', payload: {} });
-        }, 700);
     };
 
-    console.log(user);
     return (
         <div className={styles.dropdown}>
             <div className={styles.dropdown_header}>
-                <a className={styles.dropbtn}>{user.user.name}</a>
+                <a className={styles.dropbtn}>{name}</a>
                 <img style=
                     {{
-                        borderRadius: '50%', width: '30px', height: '30px',
-                    }} src={user.user.avatar} alt='avatar' />
+                        borderRadius: '50%', width: '25px', height: '25px',
+                    }} src={avatar} alt='avatar' />
             </div>
 
             <div className={styles.dropdown_content}>
                 <a href="#">Profile</a>
-                <a onClick={() =>{
+                <a onClick={() => {
                     handleLogout();
-
-                } 
+                }
                 }>Sign Out </a>
             </div>
         </div>

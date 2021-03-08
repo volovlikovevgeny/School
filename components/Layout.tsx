@@ -1,5 +1,4 @@
-import React, { ReactElement} from 'react';
-
+import React, { ReactElement } from 'react';
 import NavBar from './navbar/navbar';
 import Notify from './notify/notify';
 
@@ -12,7 +11,10 @@ const Layout = ({ children }: IProps): ReactElement => {
         <React.Fragment>
             <NavBar />
             <Notify />
-            <main>{children}</main>
+         
+            <div className='container'>
+                <main>{children}</main>
+            </div>
         </React.Fragment>
     );
 };
