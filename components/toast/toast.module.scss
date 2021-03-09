@@ -1,5 +1,6 @@
-.snackbar{
-    position: relative;
+.snackbar {
+    position: fixed;
+    top: 0;
     width: 100%; /* Set a default minimum width */
     color: #fff; /* White text color */
     text-align: center; /* Centered text */
@@ -8,8 +9,10 @@
     // position: fixed; /* Sit on top of the screen */
     z-index: 1; /* Add a z-index if needed */
 
-
-    span{
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+   
+    span {
         position: absolute;
         top: 25%;
         right: 10%;
@@ -17,3 +20,8 @@
         z-index: 2;
     }
 }
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+  }

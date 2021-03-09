@@ -6,7 +6,11 @@ export const toggleCartHidden = (): { type: string } => ({
     type: cartActionTypes.TOGGLE_CART_HIDDEN,
 });
 
-export const addItem = (item: ProductItems): cartAction => {
+export const toggleModalHidden = (): { type: string } => ({
+    type: cartActionTypes.TOGGLE_MODAL_HIDDEN,
+});
+
+export const addItem = (item: any): cartAction => {
     if (item.inStock === 0) {
         return ({
             type: 'NOTIFY',
@@ -19,12 +23,12 @@ export const addItem = (item: ProductItems): cartAction => {
     }
     );
 };
-export const removeItem = (item: ProductItems): cartAction => ({
+export const removeItem = (item: any): cartAction => ({
     type: cartActionTypes.REMOVE_ITEM,
     payload: item,
 });
 
-export const clearItemFromCart = (item: ProductItems): cartAction => ({
+export const clearItemFromCart = (item: any): cartAction => ({
     type: cartActionTypes.CLEAR_ITEM_FROM_CART,
     payload: item,
 });

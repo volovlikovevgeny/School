@@ -3,7 +3,6 @@ import Link from 'next/link';
 import styles from './navbar.module.scss';
 import { useTypedSelector } from '../../redux/hooks/useTypedSelector';
 import DropDown from '../dropdown/dropdown';
-import Image from 'next/image';
 import ShoppingIcon from '../shopping-icon/shopping-icon';
 
 const NavBar = (): ReactElement => {

@@ -28,10 +28,11 @@ const CartDropdown = (): ReactElement => {
                 style={{ marginTop: '15px' }}
                 onClick={() => {
                     router.push('/checkout');
-                    dispatch(toggleCartHidden());
-                }}
-            >
-                <CustomButton>GO TO CHECKOUT</CustomButton>
+                }
+                }>
+                <CustomButton
+                    onClick={() => dispatch(toggleCartHidden())}
+                >GO TO CHECKOUT</CustomButton>
             </div >
         </div>
     );

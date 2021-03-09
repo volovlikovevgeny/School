@@ -22,6 +22,16 @@
     .price {
       width: 23%;
     }
+
+    .name{
+      display: flex;
+      flex-direction: column;
+
+      span{
+        margin-top: 10px;
+      }
+
+    }
   
     .quantity {
       display: flex;

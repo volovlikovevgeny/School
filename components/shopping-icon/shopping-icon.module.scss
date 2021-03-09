@@ -1,9 +1,14 @@
 .shopping_bag {
     position: relative;
     margin-left: 11px;
-    transition: all .10s;
+    transition: all 0.1s;
 
     @media screen and(max-width:560px) {
         display: none;
     }
+}
+.count {
+    position: absolute;
+    right: 39px;
+    top: 12px;
 }

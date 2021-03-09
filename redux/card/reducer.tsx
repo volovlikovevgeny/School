@@ -3,6 +3,7 @@ import { cartActionTypes } from './types';
 import { addItemToCart, removeItemFromCart } from './utils';
 
 interface ProductItems {
+    modalHidden: boolean;
     hidden: boolean;
     cartItems: {
         category?: string;
@@ -22,7 +23,7 @@ interface ProductItems {
 }
 
 const initialState: ProductItems = {
-
+    modalHidden: true,
     hidden: true,
     cartItems: [],
 };
@@ -36,6 +37,11 @@ export const cartReducer = (
             return {
                 ...state,
                 hidden: !state.hidden,
+            };
+        case cartActionTypes.TOGGLE_MODAL_HIDDEN:
+            return {
+                ...state,
+                modalHidden: !state.modalHidden,
             };
         case cartActionTypes.ADD_ITEM:
             return {

@@ -21,7 +21,6 @@ interface IProps {
 
 const CartItem = ({ item }: IProps): ReactElement => {
     const { images, price, title, quantity } = item;
-
     return (
         <div className={styles.cart_item}>
             <img src={images[0].url} alt='item' />

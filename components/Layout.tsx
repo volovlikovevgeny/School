@@ -11,7 +11,6 @@ const Layout = ({ children }: IProps): ReactElement => {
         <React.Fragment>
             <NavBar />
             <Notify />
-         
             <div className='container'>
                 <main>{children}</main>
             </div>
