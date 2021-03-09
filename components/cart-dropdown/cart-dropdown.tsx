@@ -13,6 +13,8 @@ const CartDropdown = (): ReactElement => {
 
     const { cartItems } = useTypedSelector(state => state.cart);
 
+    console.log('hello world');
+    
     return (
         <div className={styles.cart_dropdown}>
             <div className={styles.cart_items}>
