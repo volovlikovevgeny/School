@@ -37,9 +37,6 @@ const register = async (req: NextApiRequest, res: NextApiResponse) => {
         const newUser = new Users({
             name, email, password: passwordHash, confirmPassword,
         });
-
-        console.log(newUser);
-
         await newUser.save();
         res.json({ msg: "Register Success!" });
 

@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 import { addItem, clearItemFromCart, removeItem, toggleModalHidden } from '../../redux/card/actions/actions';
+import CustomButton from '../custom-button/custom-button';
 import Modal from '../modal/modal';
 import styles from './checkout-item.module.scss';
 
@@ -54,12 +55,34 @@ const CheckoutItem = ({ cartItem }: IProps): ReactElement => {
             <span className={styles.price}>${price}</span>
             <div
                 className={styles.remove_button}
-                // onClick={() => dispatch(clearItemFromCart(cartItem))}
                 onClick={() => dispatch(toggleModalHidden())}
             >
                 &#10005;
         </div>
-            <Modal title={title} />
+            <Modal title={title}>
+                <p style={{ padding: '20px' }}>
+                    Do you want to delete this item?
+                </p>
+                <div style={{
+                    width: '100%',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    paddingTop: '10px',
+                }}>
+                    <div onClick={() => {
+                        dispatch(clearItemFromCart(cartItem)),
+                            dispatch(toggleModalHidden());
+                    }
+                    }>
+                        <CustomButton>Yes</CustomButton>
+                    </div>
+                    <div
+                    onClick={() =>dispatch(toggleModalHidden())}
+                    >
+                        <CustomButton>Cancel</CustomButton>
+                    </div>
+                </div>
+            </Modal>
         </div>
     );
 };

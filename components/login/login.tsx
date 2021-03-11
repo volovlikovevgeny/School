@@ -32,8 +32,6 @@ const Login = (): ReactElement => {
 
         const res = await postData('auth/login', user);
 
-        console.log(user);
-
         if (res.err) {
             dispatch(addNotifyAction({ error: res.err }));
             return;
@@ -68,8 +66,8 @@ const Login = (): ReactElement => {
                 }));
             });
             setTimeout(() => {
-                dispatch(addNotifyAction({}));
                 router.push('/');
+                dispatch(addNotifyAction({}));
             }, 800);
         }
 

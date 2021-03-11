@@ -10,7 +10,7 @@ import '../styles.scss';
 
 const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
     const [loading, setLoading] = useState<boolean>(false);
-
+    
     useEffect(() => {
         const start = () => {
             console.log('start');

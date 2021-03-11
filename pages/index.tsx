@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect} from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { GetServerSideProps } from 'next';
 import { useDispatch } from 'react-redux';
 import Directory from '../components/directory/directory';
@@ -8,9 +8,12 @@ import { addUser } from '../redux/user/actions/actions';
 import { getData } from '../utils/fetchData';
 import Head from 'next/head';
 import LoadingSpinner from '../components/loading/loading';
+import Header from '../components/slider/slider';
+import Companies from '../components/companies/companies';
+import Overview from '../components/overview/overview';
 
 const Home = ({ Product }: Product): ReactElement => {
-  
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,12 +32,14 @@ const Home = ({ Product }: Product): ReactElement => {
         }));
       });
     }
-
   }, []);
 
   return (
     <React.Fragment>
       <Head><title>Home Page</title></Head>
+      <Header />
+      {/* <Companies /> */}
+      <Overview />
 
       {
         Product.length === 0

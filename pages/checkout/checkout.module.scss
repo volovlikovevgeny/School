@@ -24,6 +24,7 @@
   }
 
   .total {
+    display: flex;
     margin-top: 30px;
     margin-left: auto;
     font-size: 36px;
@@ -40,9 +41,16 @@
     flex-direction: column;
     width: 50%;
 
-    input {
-      padding: 10px;
+    h1{
       margin-bottom: 20px;
+      font-weight: 300;
+      letter-spacing: 1.5px;
+    }
+
+
+    input {
+      margin-bottom: 20px;
+
     }
   }
 
@@ -54,6 +62,16 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+
+
+    
+  .test_warning {
+    text-align: center;
+
+    margin: 40px 0;
+    font-size: 24px;
+    color: red;
+  }
   }
 
   @media screen and(max-width:768px) {
