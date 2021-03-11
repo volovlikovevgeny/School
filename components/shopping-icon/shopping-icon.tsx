@@ -12,9 +12,6 @@ interface IProps {
     itemCount: number
 }
 const ShoppingIcon = ({ itemCount }: IProps): ReactElement => {
-
-    console.log(itemCount);
-
     const dispatch = useDispatch();
     const { hidden } = useTypedSelector(state => state.cart);
 

@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
 import Cookie from 'js-cookie';
-import styles from './dropdown.module.scss';
 import { addUser } from '../../redux/user/actions/actions';
 import { useDispatch } from 'react-redux';
+import styles from './user-dropdown.module.scss';
 
 interface IProps {
     user: {

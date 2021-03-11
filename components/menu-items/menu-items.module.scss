@@ -3,6 +3,10 @@
     margin: 20px auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
+    @media screen and(max-width:768px){
+        width: 18rem;
+    }
+
     @media screen and(max-width:376px){
         width: 18rem;
     }

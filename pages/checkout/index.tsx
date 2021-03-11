@@ -1,11 +1,14 @@
-import React, { ReactElement } from 'react';
-import { connect } from 'react-redux';
+import React, { ReactElement, useState } from 'react';
+import { connect, useDispatch } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import CheckoutItem from '../../components/checkout-item/checkout-item';
 import { selectCartTotal } from '../../redux/card/selector';
 import { useTypedSelector } from '../../redux/hooks/useTypedSelector';
 import Head from 'next/head';
 import styles from './checkout.module.scss';
+import StripeBtn from '../../components/paypal-btn/paypal-btn';
+import FormInput from '../../components/form-input/form-input';
+import { addNotifyAction } from '../../redux/notify/actions/actions';
 import CustomButton from '../../components/custom-button/custom-button';
 
 interface IProps {
@@ -13,8 +16,20 @@ interface IProps {
 }
 
 const CheckoutPage = ({ total }: IProps): ReactElement => {
-    console.log(total);
+    const dispatch = useDispatch();
     const { cartItems } = useTypedSelector(state => state.cart);
+
+    const [address, setAddress] = useState('');
+    const [mobile, setMobile] = useState('');
+    const [payment, setPayment] = useState(false);
+
+    const handlePayment = () => {
+        if (!address || !mobile) {
+            return dispatch(addNotifyAction({ error: 'Please add your address and mobile.' }));
+        }
+        setPayment(true);
+    };
+
     return (
         <div className={styles.checkout_page}>
             <Head>
@@ -50,13 +65,38 @@ const CheckoutPage = ({ total }: IProps): ReactElement => {
                 <form>
                     <h1>Shipping</h1>
                     <label>Address</label>
-                    <input name='address' type="text" />
+                    <FormInput
+                        type='address'
+                        name='address'
+                        placeholder='Address'
+                        value={address}
+                        handleChange={e => setAddress(e.target.value)}
+                        required
+                    />
                     <label>Mobile</label>
-                    <input type="text" />
+                    <FormInput
+                        type='mobile'
+                        name='mobile'
+                        placeholder='Phone number'
+                        value={mobile}
+                        handleChange={e => setMobile(e.target.value)}
+                        required
+                    />
                 </form>
                 <div className={styles.total}>
                     <p>TOTAL :${total}</p>
-                    <CustomButton>Proceed with Checkout</CustomButton>
+                    <div className={styles.test_warning}>
+                        *Please use the following test credit card for payments*
+                    <br />
+                        4242 4242 4242 4242 - Exp: 12/22 - CVV: 123
+                </div>
+                    {
+                        payment
+                            ? <StripeBtn />
+                            : <div onClick={handlePayment}>
+                                <CustomButton>Proceed with checkout</CustomButton>
+                            </div>
+                    }
                 </div>
             </div>
         </div>

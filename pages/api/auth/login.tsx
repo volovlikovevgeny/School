@@ -15,17 +15,12 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
 };
 
 const login = async (req: NextApiRequest, res: NextApiResponse) => {
-
-    console.log(req.body.password);
-
     try {
         const { email, password } = req.body;
 
         const user = await Users.findOne({ email });
 
-        if (!user) { return res.status(400).json({ err: 'This user doesn`t exist' }) }
-
-        console.log(user);
+        if (!user) { return res.status(400).json({ err: 'This user doesn`t exist' }); }
 
         const isMatch = await bcrypt.compare(password, user.password);
 

@@ -2,7 +2,7 @@ import React, { ReactElement, useState } from 'react';
 import Link from 'next/link';
 import styles from './navbar.module.scss';
 import { useTypedSelector } from '../../redux/hooks/useTypedSelector';
-import DropDown from '../dropdown/dropdown';
+import DropDown from '../user-dropdown/user-dropdown';
 import ShoppingIcon from '../shopping-icon/shopping-icon';
 
 const NavBar = (): ReactElement => {

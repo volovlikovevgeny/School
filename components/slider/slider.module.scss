@@ -1,0 +1,85 @@
+.header {
+    display: flex;
+    margin-top: 30px;
+    min-height: 70vh;
+    width: 100%;
+
+    .column_left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 70%;
+        align-items: center;
+
+        h1 {
+            font-weight: 700;
+            font-size: 65px;
+            line-height: 80px;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+
+            @media screen and(max-width:568px) {
+                font-weight: 500;
+                font-size: 45px;
+                line-height: 60px;
+                margin-bottom: 30px;
+            }
+        }
+
+        p {
+            font-weight: 300;
+            font-size: 28px;
+            line-height: 38px;
+
+            @media screen and(max-width:568px) {
+                font-weight: 300;
+                font-size: 28px;
+                line-height: 38px;
+            }
+        }
+
+        .btn {
+            margin-top: 60px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+
+            @media screen and(max-width:768px) {
+                flex-direction: column;
+            }
+            
+
+            button {
+                margin: 0 50px;
+                padding: 10px 50px;
+
+                @media screen and(max-width:768px) {
+                   margin: 25px;
+                   padding: 10px;
+                   width: 100%;
+                }
+
+                &:first-child {
+                    margin: 0;
+                    
+                }
+            }
+        }
+        @media screen and(max-width:968px) {
+            width: 100%;
+        }
+    }
+}
+
+.column_right {
+    width: 30%;
+    background-image: url("/china_flag.jpg");
+    background-position: center;
+    background-size: cover;
+
+    @media screen and(max-width:968px) {
+        display: none;
+    }
+}

@@ -1,4 +1,4 @@
-import React, { FormEvent, ReactElement, useState } from 'react';
+import React, { FormEvent, ReactElement,  useState } from 'react';
 import FormInput from '../form-input/form-input';
 import Link from 'next/link';
 import { valid } from '../../utils/valid';
@@ -50,7 +50,7 @@ const Register = (): ReactElement => {
 
         setTimeout(() => {
             dispatch({ type: 'NOTIFY', payload: {} });
-            router.push('/');
+            router.push('/signin');
         }, 1000);
     };
 
